@@ -24,6 +24,3 @@ coverage
 # yo
 .yo-rc.json
 
-# app
-App.ts
-
