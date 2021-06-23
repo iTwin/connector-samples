@@ -11,15 +11,20 @@
     "main": "./lib/App.js",
     "license": "MIT",
     "dependencies": {
-        "@bentley/bentleyjs-core": "^2.16.0",
-        "@bentley/ecschema-metadata": "^2.16.0",
-        "@bentley/electron-manager": "^2.16.0",
-        "@bentley/imodeljs-backend": "^2.16.0",
-        "@bentley/imodeljs-common": "^2.16.0",
-        "@itwin/pcf": "0.0.1"
+        "@bentley/itwin-client": "2.16.1",
+        "@bentley/backend-itwin-client": "2.16.1",
+        "@bentley/imodelhub-client": "2.16.1",
+        "@bentley/rbac-client": "2.16.1",
+        "@bentley/geometry-core": "2.16.1",
+        "@bentley/telemetry-client": "2.16.1",
+        "@bentley/bentleyjs-core": "2.16.1",
+        "@bentley/ecschema-metadata": "2.16.1",
+        "@bentley/electron-manager": "2.16.1",
+        "@bentley/imodeljs-backend": "2.16.1",
+        "@bentley/imodeljs-common": "2.16.1"
     },
     "devDependencies": {
-        "@bentley/build-tools": "^2.16.0",
+        "@bentley/build-tools": "2.16.1",
         "@types/node": "^10.17.28",
         "babel-cli": "^6.26.0",
         "typescript": "^4.1.0"

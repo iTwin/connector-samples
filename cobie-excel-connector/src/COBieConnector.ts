@@ -6,8 +6,30 @@ import * as relatedElements from "./dmos/RelatedElements";
 import * as path from "path";
 
 export class COBieConnector extends pcf.PConnector {
-    constructor(config: pcf.PConnectorConfig) {
-        super(config);
+    constructor() {
+        super();
+
+        const config = new pcf.PConnectorConfig(this, {
+            domainSchemaPaths: [
+                "Functional.ecschema.xml",
+                "SpatialComposition.ecschema.xml",
+                "BuildingSpatial.ecschema.xml"
+            ].map((file: string) => path.join(__dirname, "./assets/domain_schemas", file)),
+            dynamicSchema: {
+                schemaName: "COBieDynamic",
+                schemaAlias: "cd",
+            },
+            connectorName: "COBieConnector",
+            appId: "COBieConnector",
+            appVersion: "1.0.0.0",
+            loader: {
+                // Select entity & relationship sheets to import.
+                entityKeys: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute"],
+                relKeys: ["System", "Zone", "Space", "Connection", "Assembly"],
+                primaryKeyMap: { Contact: "Email" },
+                defaultPrimaryKey: "Name",
+            },
+        });
 
         const defModel = new pcf.ModelNode(this, { key: "DefinitionModel1", bisClass: bk.DefinitionModel, partitionClass: bk.DefinitionPartition });
         const phyModel = new pcf.ModelNode(this, { key: "PhysicalModel1", bisClass: bk.PhysicalModel, partitionClass: bk.PhysicalPartition });
@@ -74,26 +96,5 @@ export class COBieConnector extends pcf.PConnector {
     }
 }
 
-export function getBridgeInstance() {
-    return new COBieConnector({
-        schemaConfig: {
-            domainSchemaPaths: [
-                "Functional.ecschema.xml",
-                "SpatialComposition.ecschema.xml",
-                "BuildingSpatial.ecschema.xml"]
-                .map((file: string) => path.join(__dirname, "./assets/domain_schemas", file)),
-            schemaName: "COBieDynamic",
-            schemaAlias: "cd",
-        },
-        connectorName: "COBieConnector",
-        appId: "COBieConnector",
-        appVersion: "1.0.0.0",
-        xlsxConfig: {
-            // Select entity & relationship sheets to import.
-            entityKeys: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute"],
-            relKeys: ["System", "Zone", "Space", "Connection", "Assembly"],
-            primaryKeyMap: { Contact: "Email" },
-            defaultPrimaryKey: "Name",
-        },
-    });
-}
+export default new COBieConnector();
+
