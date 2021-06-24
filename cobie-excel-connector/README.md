@@ -15,7 +15,7 @@ const jobArgs = new pcf.JobArgs({
 });
 ```
 
-## Create your mappings between COBie Schema and IR Model by defining [DMO](https://github.com/iTwin/pcf#constructs)'s:
+## Create your mappings between COBie Schema and IR Model and EC Schema by defining [DMO](https://github.com/iTwin/pcf#constructs)'s:
 
 ```typescript
 // in ./dmos/Elements.ts
