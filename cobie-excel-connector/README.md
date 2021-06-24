@@ -1,10 +1,41 @@
 # Excel Connector Sample (COBie Schema)
 
-This is a production-ready iTwin Connector sample that uses the [@itwin/pcf library](https://github.com/iTwin/pcf). It has ~500 lines of code that are purely object DEFINITIONS that could be linted by TypeScript Language Server. [Its predecessor](https://github.com/imodeljs/itwin-connector-sample) has ~2000 lines of code which are complex functions and difficult to make sense of.
+This is a production-ready iTwin Connector sample that uses the [@itwin/pcf library](https://github.com/iTwin/pcf). 
 
-You may find this sample a great reference to develop your own iTwin.js Connectors with twin-pcf.
+## Accessing COBie data stored in Excel format:
+```typescript
+// in App.ts
+const jobArgs = new pcf.JobArgs({
+  loaderClass: pcf.XLSXLoader,
+  connectorPath: path.join(__dirname, "COBieConnector.js"),
+  con: {
+    kind: "FileConnection",
+    filepath: path.join(__dirname, "./assets/COBieV1.xlsx"),
+  },
+});
+```
 
-## How to run it?
+## Create your mappings between COBie Schema and IR Model by defining [DMO](https://github.com/iTwin/pcf#constructs)'s:
+
+```typescript
+// in ./dmos/Elements.ts
+export const Component: pcf.ElementDMO = {
+    entity: "Component",
+    classFullName: "COBieDynamic:Component",
+    classProps: {
+        name: "Component",
+        baseClass: "BisCore.PhysicalElement",
+    },
+};
+```
+
+## Structure your iModel the way you like.
+See [COBieConnector](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts)
+
+
+You may find this sample a great reference to develop your own iTwin Connectors with twin-pcf.
+
+# How to run it?
 
 ```console
 
