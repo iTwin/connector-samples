@@ -29,11 +29,11 @@ export const Component: pcf.ElementDMO = {
 };
 ```
 
-## Structure your iModel the way you like.
-See [COBieConnector](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts)
+## Structure your iModel the way you like by defining [Node](https://github.com/iTwin/pcf#constructs)'s:
+Nodes are defined in [COBieConnector](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts)
 
 
-You may find this sample a great reference to develop your own iTwin Connectors with twin-pcf.
+Note: You may find this sample a great reference to develop your own iTwin Connectors with twin-pcf.
 
 # How to run it?
 
