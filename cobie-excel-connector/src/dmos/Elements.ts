@@ -1,157 +1,174 @@
 import * as pcf from "@itwin/pcf";
 
-export const Component: pcf.ElementDMO = {
-    entity: "Component",
-    classFullName: "COBieDynamic:Component",
-    classProps: {
-        name: "Component",
-        baseClass: "BisCore.PhysicalElement",
-    },
+export const FacilityCategory: pcf.ElementDMO = {
+  irEntity: "Facility",
+  ecElement: "BisCore:SpatialCategory",
 };
 
-export const Type: pcf.ElementDMO = {
-    entity: "Type",
-    classFullName: "COBieDynamic:Type",
-    classProps: {
-        name: "Type",
-        baseClass: "BisCore:PhysicalType",
-    },
+export const FloorCategory: pcf.ElementDMO = {
+  irEntity: "Floor",
+  ecElement: "BisCore:SpatialCategory",
+  doSyncInstance(instance: pcf.IRInstance) {
+    if (instance.pkv.includes("/"))
+      return false;
+    return true;
+  }
+};
+
+export const SpaceCategory: pcf.ElementDMO = {
+  irEntity: "Space",
+  ecElement: "BisCore:SpatialCategory",
+};
+
+export const Component: pcf.ElementDMO = {
+  irEntity: "Component",
+  ecElement: {
+    name: "Component",
+    baseClass: "BisCore:PhysicalElement",
+  },
+  categoryAttr: "Space",
+  doSyncInstance(instance: pcf.IRInstance) {
+    if (instance.get("Space").includes(","))
+      return false;
+    return true;
+  }
 };
 
 export const Space: pcf.ElementDMO = {
-    entity: "Space",
-    classFullName: "COBieDynamic:Space",
-    classProps: {
-        name: "Space",
-        baseClass: "BuildingSpatial:Space",
-    },
-    modifyProps(props: any, instance: pcf.IRInstance) {
-        props.footprintArea = instance.get("GrossArea");
-    },
+  irEntity: "Space",
+  ecElement: {
+    name: "Space",
+    baseClass: "BuildingSpatial:Space",
+  },
+  modifyProps(props: any, instance: pcf.IRInstance) {
+    props.footprintArea = instance.get("GrossArea");
+  },
+  categoryAttr: "FloorName",
 };
 
 export const Floor: pcf.ElementDMO = {
-    entity: "Floor",
-    classFullName: "COBieDynamic:Floor",
-    classProps: {
-        name: "Floor",
-        baseClass: "BuildingSpatial:RegularStory",
-    },
+  irEntity: "Floor",
+  ecElement: {
+    name: "Floor",
+    baseClass: "BuildingSpatial:RegularStory",
+  },
+  categoryAttr: "Name",
+  doSyncInstance(instance: pcf.IRInstance) {
+    if (instance.pkv.includes("/"))
+      return false;
+    return true;
+  }
 };
 
 export const Facility: pcf.ElementDMO = {
-    entity: "Facility",
-    classFullName: "COBieDynamic:Facility",
-    classProps: {
-        name: "Facility",
-        baseClass: "BuildingSpatial:Building",
-    },
+  irEntity: "Facility",
+  ecElement: {
+    name: "Facility",
+    baseClass: "BuildingSpatial:Building",
+  },
+  categoryAttr: "Name",
+};
+
+export const Type: pcf.ElementDMO = {
+  irEntity: "Type",
+  ecElement: {
+    name: "Type",
+    baseClass: "BisCore:PhysicalType",
+  },
 };
 
 export const Zone: pcf.ElementDMO = {
-    entity: "Zone",
-    classFullName: "COBieDynamic:Zone",
-    classProps: {
-        name: "Zone",
-        baseClass: "BisCore:GroupInformationElement",
-    },
+  irEntity: "Zone",
+  ecElement: {
+    name: "Zone",
+    baseClass: "BisCore:GroupInformationElement",
+  },
 };
 
 export const System: pcf.ElementDMO = {
-    entity: "System",
-    classFullName: "COBieDynamic:System",
-    classProps: {
-        name: "System",
-        baseClass: "BisCore:GroupInformationElement",
-    },
+  irEntity: "System",
+  ecElement: {
+    name: "System",
+    baseClass: "BisCore:GroupInformationElement",
+  },
 };
 
 export const Connection: pcf.ElementDMO = {
-    entity: "Connection",
-    classFullName: "COBieDynamic:Connection",
-    classProps: {
-        name: "Connection",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Connection",
+  ecElement: {
+    name: "Connection",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Assembly: pcf.ElementDMO = {
-    entity: "Assembly",
-    classFullName: "COBieDynamic:Assembly",
-    classProps: {
-        name: "Assembly",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Assembly",
+  ecElement: {
+    name: "Assembly",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Attribute: pcf.ElementDMO = {
-    entity: "Attribute",
-    classFullName: "COBieDynamic:Attribute",
-    classProps: {
-        name: "Attribute",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Attribute",
+  ecElement: {
+    name: "Attribute",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Contact: pcf.ElementDMO = {
-    entity: "Contact",
-    classFullName: "COBieDynamic:Contact",
-    classProps: {
-        name: "Contact",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Contact",
+  ecElement: {
+    name: "Contact",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Impact: pcf.ElementDMO = {
-    entity: "Impact",
-    classFullName: "COBieDynamic:Impact",
-    classProps: {
-        name: "Impact",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Impact",
+  ecElement: {
+    name: "Impact",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Issue: pcf.ElementDMO = {
-    entity: "Issue",
-    classFullName: "COBieDynamic:Issue",
-    classProps: {
-        name: "Issue",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Issue",
+  ecElement: {
+    name: "Issue",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Spare: pcf.ElementDMO = {
-    entity: "Spare",
-    classFullName: "COBieDynamic:Spare",
-    classProps: {
-        name: "Spare",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Spare",
+  ecElement: {
+    name: "Spare",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Job: pcf.ElementDMO = {
-    entity: "Job",
-    classFullName: "COBieDynamic:Job",
-    classProps: {
-        name: "Job",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Job",
+  ecElement:{
+    name: "Job",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const Resource: pcf.ElementDMO = {
-    entity: "Resource",
-    classFullName: "COBieDynamic:Resource",
-    classProps: {
-        name: "Resource",
-        baseClass: "BisCore:InformationRecordElement",
-    },
+  irEntity: "Resource",
+  ecElement: {
+    name: "Resource",
+    baseClass: "BisCore:InformationRecordElement",
+  },
 };
 
 export const COBieDocument: pcf.ElementDMO = {
-    entity: "Document",
-    classFullName: "COBieDynamic:COBieDocument",
-    classProps: {
-        name: "COBieDocument",
-        baseClass: "BisCore:Document",
-    },
+  irEntity: "Document",
+  ecElement: {
+    name: "COBieDocument",
+    baseClass: "BisCore:Document",
+  },
 };

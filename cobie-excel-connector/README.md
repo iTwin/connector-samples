@@ -10,19 +10,20 @@ const jobArgs = new pcf.JobArgs({
   connectorPath: path.join(__dirname, "COBieConnector.js"),
   con: {
     kind: "FileConnection",
-    filepath: path.join(__dirname, "./assets/COBieV1.xlsx"),
+    filepath: path.join(__dirname, "<path to your COBie file>"),
   },
 });
 ```
+
+Don't forget to gitignore your App.ts file as it contains client specific info.
 
 ## Create your mappings between COBie Schema and IR Model and EC Schema by defining [DMO](https://github.com/iTwin/pcf#constructs)'s:
 
 ```typescript
 // in ./dmos/Elements.ts
 export const Component: pcf.ElementDMO = {
-    entity: "Component",
-    classFullName: "COBieDynamic:Component",
-    classProps: {
+    irEntity: "Component",
+    ecElement: {
         name: "Component",
         baseClass: "BisCore.PhysicalElement",
     },
@@ -42,7 +43,8 @@ Note: You may find this sample a great reference to develop your own iTwin Conne
 # STEP 1
 npm install
 
-# STEP 2: Add your own client ID, project ID, and iModel ID in App.ts 
+# STEP 2: Add client ID, project ID, iModel ID, and path to your COBie file in App.ts 
+
 
 # STEP 3
 npm run build
@@ -51,10 +53,12 @@ npm run build
 npm run start
 
 # STEP 5 (optional): Update source data 
-# make changes to ./lib/COBieV1.xlsx (e.g. add/update/delete rows)
+# make changes to your COBie file (e.g. add/update/delete rows)
 
 # STEP 6 (optional): Run your connector again to update your existing iModel
 npm run start 
 
 ```
+
+Your can acquire COBie Sample files from [here](https://www.prairieskyconsulting.com/resource.htm).
 
