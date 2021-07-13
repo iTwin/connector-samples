@@ -26,7 +26,7 @@ npm run start
 
 ```
 
-Your can acquire COBie Sample files from [here](https://www.prairieskyconsulting.com/resource.htm).
+Your can acquire COBie Sample files from [here](https://portal.nibs.org/files/wl/?id=oy5MyBRPiLx7ZmAomBRMgL62o1hi3YLk).
 
 Don't forget to gitignore your App.ts file as it contains client specific info.
 
