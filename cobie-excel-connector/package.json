@@ -10,7 +10,12 @@
   },
   "main": "./lib/App.js",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@bentley/aec-units-schema": "^1.0.3",
+    "@bentley/building-spatial-schema": "^1.0.1",
+    "@bentley/functional-schema": "^1.0.3",
+    "@bentley/spatial-composition-schema": "^1.0.1"
+  },
   "devDependencies": {
     "@bentley/build-tools": "2.16.1",
     "@types/node": "^10.17.28",

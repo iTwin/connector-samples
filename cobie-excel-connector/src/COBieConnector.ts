@@ -16,10 +16,11 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.PConnectorConfig(this, {
       domainSchemaPaths: [
-        "Functional.ecschema.xml",
-        "SpatialComposition.ecschema.xml",
-        "BuildingSpatial.ecschema.xml"
-      ].map((file: string) => path.join(__dirname, "./assets/domain_schemas", file)),
+        path.join(__dirname, "../node_modules/@bentley/aec-units-schema/AecUnits.ecschema.xml"),
+        path.join(__dirname, "../node_modules/@bentley/functional-schema/Functional.ecschema.xml"),
+        path.join(__dirname, "../node_modules/@bentley/spatial-composition-schema/SpatialComposition.ecschema.xml"),
+        path.join(__dirname, "../node_modules/@bentley/building-spatial-schema/BuildingSpatial.ecschema.xml"),
+      ],
       dynamicSchema: {
         schemaName: "COBieDynamic",
         schemaAlias: "cd",
