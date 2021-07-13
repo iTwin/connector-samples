@@ -9,19 +9,18 @@ This is a production-ready iTwin Connector sample that uses the [@itwin/pcf libr
 # STEP 1
 npm install
 
-# STEP 2: Add client ID, project ID, iModel ID, and path to your COBie file in App.ts 
+# STEP 2: 
+# Add 1. app client ID 2. project ID 3. iModel ID 4. path to your COBie file in App.ts 
 
-
-# STEP 3
-npm run build
-
-# STEP 4: Run your connector
+# STEP 3: 
+# Run your connector
 npm run start
 
-# STEP 5 (optional): Update source data 
+# STEP 4: 
 # make changes to your COBie file (e.g. add/update/delete rows)
 
-# STEP 6 (optional): Run your connector again to update your existing iModel
+# STEP 5: 
+# Run your connector again to synchronize the modified cobie file with your iModel
 npm run start 
 
 ```
