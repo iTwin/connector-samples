@@ -5,7 +5,7 @@
   "scripts": {
     "start": "tsc && node ./lib/App.js",
     "build": "tsc",
-    "clean": "rimraf lib"
+    "watch": "tsc -w"
   },
   "main": "./lib/App.js",
   "license": "MIT",
