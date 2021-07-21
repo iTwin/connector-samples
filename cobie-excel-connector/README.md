@@ -1,6 +1,6 @@
 # Excel Connector Sample (COBie Schema)
 
-This is a production-ready iTwin Connector sample that uses the [@itwin/pcf library](https://github.com/iTwin/pcf). 
+This is an iTwin Connector sample that uses the [@itwin/pcf library](https://github.com/iTwin/pcf). 
 
 # How to run it?
 
