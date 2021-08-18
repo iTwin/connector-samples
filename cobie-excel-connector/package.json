@@ -1,7 +1,7 @@
 {
   "name": "cobie-excel-connector",
   "version": "1.0.0",
-  "description": "COBie Excel Connector (powered by pcf)",
+  "description": "COBie Excel Connector",
   "scripts": {
     "start": "tsc && node ./lib/App.js",
     "build": "tsc",
@@ -13,7 +13,8 @@
     "@bentley/aec-units-schema": "1.0.3",
     "@bentley/functional-schema": "1.0.3",
     "@bentley/building-spatial-schema": "1.0.0",
-    "@bentley/spatial-composition-schema": "1.0.0"
+    "@bentley/spatial-composition-schema": "1.0.0",
+    "@itwin/pcf": "0.1.1"
   },
   "devDependencies": {
     "@bentley/build-tools": "2.16.9",

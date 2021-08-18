@@ -15,9 +15,7 @@ const {
 } = pcf.imodeljs_backend;
 
 export class COBieConnector extends pcf.PConnector {
-  constructor() {
-    super();
-
+  public async form() {
     new pcf.PConnectorConfig(this, {
       domainSchemaPaths: [
         path.join(__dirname, "../node_modules/@bentley/aec-units-schema/AecUnits.ecschema.xml"),
@@ -36,7 +34,7 @@ export class COBieConnector extends pcf.PConnector {
 
     const subject1 = new pcf.SubjectNode(this, { key: "cobie-subject-1" });
 
-    const linkModel = new pcf.ModelNode(this, { key: "LinkModel1", subject: subject1, modelClass: LinkModel, partitionClass: LinkPartition });
+    const lnkModel = new pcf.ModelNode(this, { key: "LinkModel1", subject: subject1, modelClass: LinkModel, partitionClass: LinkPartition });
     const defModel = new pcf.ModelNode(this, { key: "DefinitionModel1", subject: subject1, modelClass: DefinitionModel, partitionClass: DefinitionPartition });
     const phyModel = new pcf.ModelNode(this, { key: "PhysicalModel1", subject: subject1, modelClass: PhysicalModel, partitionClass: PhysicalPartition });
     const sptModel = new pcf.ModelNode(this, { key: "SpatialLocationModel1", subject: subject1, modelClass: SpatialLocationModel, partitionClass: SpatialLocationPartition });
@@ -46,11 +44,11 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.LoaderNode(this, {
       key: "cobie-xlsx-loader",
-      model: linkModel,
+      model: lnkModel,
       loader: new pcf.XLSXLoader({
         format: "xlsx",
-        entities: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute"],
-        relationships: ["System", "Zone", "Space", "Connection", "Assembly"],
+        entities: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute", "Assembly", "Connection", "Issue", "Impact"],
+        relationships: ["Component", "System", "Zone", "Space", "Connection", "Assembly"],
         primaryKeyMap: { Contact: "Email" },
         defaultPrimaryKey: "Name",
       }),
@@ -60,10 +58,10 @@ export class COBieConnector extends pcf.PConnector {
     const floorCategory = new pcf.ElementNode(this, { key: "FloorCategory", model: defModel, dmo: elements.FloorCategory });
     const spaceCategory = new pcf.ElementNode(this, { key: "SpaceCategory", model: defModel, dmo: elements.SpaceCategory });
 
-    const facility = new pcf.ElementNode(this, { key: "Facility", model: sptModel, dmo: elements.Facility, category: facilityCategory });
-    const space = new pcf.ElementNode(this, { key: "Space", model: sptModel, dmo: elements.Space, category: floorCategory });
-    const floor = new pcf.ElementNode(this, { key: "Floor", model: sptModel, dmo: elements.Floor, category: floorCategory });
     const component = new pcf.ElementNode(this, { key: "Component", model: phyModel, dmo: elements.Component, category: spaceCategory });
+    const space = new pcf.ElementNode(this, { key: "Space", model: sptModel, dmo: elements.Space, category: floorCategory });
+    const facility = new pcf.ElementNode(this, { key: "Facility", model: sptModel, dmo: elements.Facility, category: facilityCategory });
+    const floor = new pcf.ElementNode(this, { key: "Floor", model: sptModel, dmo: elements.Floor, category: floorCategory });
 
     const type = new pcf.ElementNode(this, { key: "Type", model: defModel, dmo: elements.Type });
     const zone = new pcf.ElementNode(this, { key: "Zone", model: grpModel, dmo: elements.Zone });
@@ -123,6 +121,9 @@ export class COBieConnector extends pcf.PConnector {
   }
 }
 
-export function getBridgeInstance() {
-  return new COBieConnector();
+export async function getBridgeInstance() {
+  const connector = new COBieConnector();
+  await connector.form();
+  return connector;
 }
+

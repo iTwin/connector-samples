@@ -16,7 +16,7 @@ export const FloorCategory: pcf.ElementDMO = {
     if (instance.pkv.includes("/"))
       return false;
     return true;
-  }
+  },
 };
 
 export const SpaceCategory: pcf.ElementDMO = {
@@ -35,7 +35,7 @@ export const Component: pcf.ElementDMO = {
     if (instance.get("Space").includes(","))
       return false;
     return true;
-  }
+  },
 };
 
 export const Space: pcf.ElementDMO = {
