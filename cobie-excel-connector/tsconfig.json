@@ -5,14 +5,14 @@
     "baseUrl": "./node_modules",
     "outDir": "./lib",
     "noUnusedParameters": false,
-		"skipLibCheck": true
+    "skipLibCheck": true
   },
   "include": [
-		"./src/**/*"
-	],
+    "./src/**/*"
+  ],
   "exclude": [
-		"lib",
-		"node_modules"
-	]
+    "lib",
+    "node_modules"
+  ]
 }
 
