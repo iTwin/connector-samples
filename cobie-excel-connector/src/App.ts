@@ -15,7 +15,7 @@ export async function main() {
     connection: {
       loaderKey: "cobie-xlsx-loader",
       kind: "pcf_file_connection",
-      filepath: path.join(__dirname, "<to fill up>"),
+      filepath: path.join(__dirname, "../assets/<to fill up>"),
     },
   });
   const hubArgs = new pcf.HubArgs({
@@ -31,5 +31,5 @@ export async function main() {
   await app.run();
 }
 
-main();
+main().catch((err) => console.log(err.message));
 
