@@ -8,11 +8,6 @@ COBie is an international standard for building data exchange. Its most common u
 
 # How to run it?
 
-## Install
-
-```bash
-npm install
-```
 
 ## Acquire source file
 
@@ -31,6 +26,11 @@ npm install
 1. Select a project and create an iModel on itwin.bentley.com
 2. Go to the iModel page and extract Project ID & iModel ID from url ``` https://itwin.bentley.com/review/{Project ID}/{iModel ID}/{Change Set ID}/-1/ ```
 
+## Install dependencies
+
+```bash
+npm install
+```
 
 ## Run connector
 
@@ -49,5 +49,5 @@ Make changes to your COBie file (e.g. try add/update/delete rows)
 npm run start
 ```
 
-Don't forget to include App.ts in .gitignore as it contains client specific info that you may not want to share.
+DO NOT forget to include App.ts in .gitignore as it contains client specific info that you may not want to share.
 
