@@ -23,7 +23,7 @@ COBie is an international standard for building data exchange. Its most common u
 
 ## Create a new iModel
 
-1. Select a project and create an iModel on itwin.bentley.com
+1. Select a project and create an iModel on https://itwin.bentley.com
 2. Go to the iModel page and extract Project ID & iModel ID from url ``` https://itwin.bentley.com/review/{Project ID}/{iModel ID}/{Change Set ID}/-1/ ```
 
 ## Install dependencies
