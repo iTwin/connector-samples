@@ -25,6 +25,7 @@ export async function main() {
       clientId: "<to fill up>",
       redirectUri: "<to fill up>",
       scope: "<to fill up>",
+      issuerUrl: "https://ims.bentley.com",
     },
   });
   const app = new pcf.BaseApp(jobArgs, hubArgs);

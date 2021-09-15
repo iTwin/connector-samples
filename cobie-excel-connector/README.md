@@ -18,12 +18,12 @@ COBie is an international standard for building data exchange. Its most common u
 ## Register a new application
 
 1. Go to developer.bentley.com
-2. Register a new application with Application Type = SPA with necessary scopes (e.g., "Visualization", "Digital Twin Management")
+2. Register a new application with Application Type = SPA with scope "Visualization"
 
 
 ## Create a new iModel
 
-1. Select a project and create an iModel on itwin.bentley.com
+1. Select a project and create an iModel on https://itwin.bentley.com
 2. Go to the iModel page and extract Project ID & iModel ID from url ``` https://itwin.bentley.com/review/{Project ID}/{iModel ID}/{Change Set ID}/-1/ ```
 
 ## Install dependencies
@@ -34,7 +34,7 @@ npm install
 
 ## Run connector
 
-In App.ts, add 1. Path to your COBie file 2. New App Client Info 3. Project ID and iModel ID 
+In App.ts, add 1. Path to your COBie file 2. New App Client Info 3. Project ID and iModel ID
 
 ```bash
 npm run start
