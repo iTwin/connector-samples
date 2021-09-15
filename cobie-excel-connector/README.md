@@ -18,7 +18,7 @@ COBie is an international standard for building data exchange. Its most common u
 ## Register a new application
 
 1. Go to developer.bentley.com
-2. Register a new application with Application Type = SPA with scope "Visualization"
+2. Register a new SPA App with scope "Visualization"
 
 
 ## Create a new iModel
