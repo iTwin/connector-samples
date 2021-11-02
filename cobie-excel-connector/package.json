@@ -14,7 +14,7 @@
     "@bentley/functional-schema": "1.0.3",
     "@bentley/building-spatial-schema": "1.0.0",
     "@bentley/spatial-composition-schema": "1.0.0",
-    "@itwin/pcf": "0.1.1"
+    "@itwin/pcf": "0.1.2"
   },
   "devDependencies": {
     "@bentley/build-tools": "2.16.9",

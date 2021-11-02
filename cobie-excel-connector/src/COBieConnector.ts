@@ -7,12 +7,11 @@ import * as relationships from "./dmos/Relationships";
 import * as relatedElements from "./dmos/RelatedElements";
 import * as path from "path";
 import * as pcf from "@itwin/pcf";
-
-const { 
+import {
   DefinitionModel, DefinitionPartition, PhysicalModel, PhysicalPartition, SpatialLocationModel, SpatialLocationPartition,
   InformationRecordModel, InformationRecordPartition, GroupModel, GroupInformationPartition, DocumentListModel, DocumentPartition, 
   LinkModel, LinkPartition,
-} = pcf.imodeljs_backend;
+} from "@bentley/imodeljs-backend";
 
 export class COBieConnector extends pcf.PConnector {
   public async form() {
@@ -79,6 +78,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelationshipNode(this, {
       key: "ComponentConnectsToComponent",
+      subject: subject1,
       dmo: relationships.ComponentConnectsToComponent,
       source: component,
       target: component,
@@ -86,6 +86,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelationshipNode(this, { 
       key: "ZoneIncludesSpaces",
+      subject: subject1,
       dmo: relationships.ZoneIncludesSpaces,
       source: zone,
       target: space,
@@ -93,6 +94,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelationshipNode(this, { 
       key: "SystemGroupsComponents",
+      subject: subject1,
       dmo: relationships.SystemGroupsComponents,
       source: system,
       target: component,
@@ -100,6 +102,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelatedElementNode(this, { 
       key: "ComponentAssemblesComponents",
+      subject: subject1,
       dmo: relatedElements.ComponentAssemblesComponents,
       source: component,
       target: component,
@@ -107,6 +110,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelatedElementNode(this, { 
       key: "ComponentOwnsType",
+      subject: subject1,
       dmo: relatedElements.ComponentOwnsType,
       source: component,
       target: type,
@@ -114,6 +118,7 @@ export class COBieConnector extends pcf.PConnector {
 
     new pcf.RelatedElementNode(this, { 
       key: "FloorComposesSpaces",
+      subject: subject1,
       dmo: relatedElements.FloorComposesSpaces,
       source: floor,
       target: space,

@@ -15,16 +15,16 @@ export async function main() {
     connection: {
       loaderKey: "cobie-xlsx-loader",
       kind: "pcf_file_connection",
-      filepath: path.join(__dirname, "../assets/<to fill up>"),
+      filepath: path.join(__dirname, "../assets/<source XLSX file name>"),
     },
   });
   const hubArgs = new pcf.HubArgs({
-    projectId: "<to fill up>",
-    iModelId: "<to fill up>",
+    projectId: "<your project ID>",
+    iModelId: "<your iModel ID>",
     clientConfig: {
-      clientId: "<to fill up>",
-      redirectUri: "<to fill up>",
-      scope: "<to fill up>",
+      clientId: "<your client ID>",
+      redirectUri: "<your client redirect URI>",
+      scope: "<your client scope>",
       issuerUrl: "https://ims.bentley.com",
     },
   });
