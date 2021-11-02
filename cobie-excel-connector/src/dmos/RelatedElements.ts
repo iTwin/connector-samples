@@ -3,9 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import * as pcf from "@itwin/pcf";
-
-const { PhysicalElement, PhysicalType } = pcf.imodeljs_backend;
-const { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } = pcf.ecschema_metadata;
+import { PhysicalElement, PhysicalType } from "@bentley/imodeljs-backend";
+import { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } from "@bentley/ecschema-metadata";
 
 export const ComponentAssemblesComponents: pcf.RelatedElementDMO = {
   irEntity: "Assembly",
