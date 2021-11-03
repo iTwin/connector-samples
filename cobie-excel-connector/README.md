@@ -49,5 +49,31 @@ Make changes to your COBie file (e.g. try add/update/delete rows)
 npm run start
 ```
 
-DO NOT forget to include App.ts in .gitignore as it contains client specific info that you may not want to share.
+**DO NOT forget to include App.ts in .gitignore as it contains client specific info that you may not want to share.**
+
+# How does it work?
+
+## Classes
+
+| Class Name | Location | Definition |
+| -          | -        | -          |
+| COBieConnector | [src/COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) | COBieConnector class is where everything is put together and you can readily learn the layout of your iModel by reading it. |
+| BaseApp        | [src/App.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/App.ts#L31) | BaseApp is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... |
+
+## DMOs
+
+| DMO | Location | Definition |
+| -   | -        | -          |
+| ElementDMO        | dmos/Elements.ts        | |
+| RelationshipDMO   | dmos/Relationships.ts   |  |
+| RelatedElementDMO | dmos/RelatedElements.ts |  |
+
+## Nodes
+
+| Node | Definition |
+| -    | -          |
+| SubjectNode | Represents a Subject Element in iModel |
+| LoaderNode  | Represents a RepositoryLink Element in iModel |
+| ModelNode   | Represents a Model & Partition Element in iModel |
+| ElementNode | Represents a normal Element in iModel |
 
