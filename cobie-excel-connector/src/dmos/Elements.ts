@@ -3,6 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import * as pcf from "@itwin/pcf";
+import { GeometryStreamBuilder, GeometryParams } from "@bentley/imodeljs-common";
+import { Point3d, LineString3d } from "@bentley/geometry-core";
 
 export const FacilityCategory: pcf.ElementDMO = {
   irEntity: "Facility",
@@ -48,6 +50,31 @@ export const Space: pcf.ElementDMO = {
     props.footprintArea = instance.get("GrossArea");
   },
   categoryAttr: "FloorName",
+};
+
+export const Coordinate: pcf.ElementDMO = {
+  irEntity: "Coordinate",
+  ecElement: {
+    name: "COBieCoordinate",
+    baseClass: "BuildingSpatial:Space",
+  },
+  modifyProps(props: any, instance: pcf.IRInstance) {
+    const builder = new GeometryStreamBuilder();
+
+    // props has category given categoryAttr is defined.
+    const params = new GeometryParams(props.category);
+    params.weight = 10;
+    builder.appendGeometryParamsChange(params);
+
+    const x = instance.get("CoordinateXAxis");
+    const y = instance.get("CoordinateYAxis");
+    const z = instance.get("CoordinateZAxis");
+    const lineStr = LineString3d.createPoints([new Point3d(x, y, z)]);
+    builder.appendGeometry(lineStr);
+
+    props.geom = builder.geometryStream;
+  },
+  categoryAttr: "RowName",
 };
 
 export const Floor: pcf.ElementDMO = {

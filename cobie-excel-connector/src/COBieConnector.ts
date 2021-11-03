@@ -31,7 +31,7 @@ export class COBieConnector extends pcf.PConnector {
       appVersion: "1.0.0.0",
     });
 
-    const subject1 = new pcf.SubjectNode(this, { key: "cobie-subject-1" });
+    const subject1 = new pcf.SubjectNode(this, { key: "Duplex-Handover" });
 
     const lnkModel = new pcf.ModelNode(this, { key: "LinkModel1", subject: subject1, modelClass: LinkModel, partitionClass: LinkPartition });
     const defModel = new pcf.ModelNode(this, { key: "DefinitionModel1", subject: subject1, modelClass: DefinitionModel, partitionClass: DefinitionPartition });
@@ -46,7 +46,7 @@ export class COBieConnector extends pcf.PConnector {
       model: lnkModel,
       loader: new pcf.XLSXLoader({
         format: "xlsx",
-        entities: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute", "Assembly", "Connection", "Issue", "Impact"],
+        entities: ["Contact", "Facility", "Floor", "Space", "Zone", "Type", "Component", "System", "Spare", "Resource", "Job", "Document", "Attribute", "Assembly", "Connection", "Issue", "Impact", "Coordinate"],
         relationships: ["Component", "System", "Zone", "Space", "Connection", "Assembly"],
         primaryKeyMap: { Contact: "Email" },
         defaultPrimaryKey: "Name",
@@ -58,6 +58,7 @@ export class COBieConnector extends pcf.PConnector {
     const spaceCategory = new pcf.ElementNode(this, { key: "SpaceCategory", model: defModel, dmo: elements.SpaceCategory });
 
     const component = new pcf.ElementNode(this, { key: "Component", model: phyModel, dmo: elements.Component, category: spaceCategory });
+    const coordinate = new pcf.ElementNode(this, { key: "Coordinate", model: sptModel, dmo: elements.Coordinate, category: spaceCategory });
     const space = new pcf.ElementNode(this, { key: "Space", model: sptModel, dmo: elements.Space, category: floorCategory });
     const facility = new pcf.ElementNode(this, { key: "Facility", model: sptModel, dmo: elements.Facility, category: facilityCategory });
     const floor = new pcf.ElementNode(this, { key: "Floor", model: sptModel, dmo: elements.Floor, category: floorCategory });
