@@ -1,6 +1,6 @@
 # Excel Connector Sample (COBie Schema)
 
-This is an iTwin Connector sample that uses the [@itwin/pcf library](https://github.com/iTwin/pcf).
+This is an iTwin Connector sample that uses the [@itwin/pcf](https://github.com/iTwin/pcf) connector framework.
 
 # What's [COBie](https://en.wikipedia.org/wiki/COBie#:~:text=Construction%20Operations%20Building%20Information%20Exchange,COBie%20was%20designed%20by%20Dr.)?
 
@@ -53,27 +53,29 @@ npm run start
 
 # How does it work?
 
-## Classes
+The first place to start is the [dmos directory](https://github.com/iTwin/connector-samples/tree/main/cobie-excel-connector/src/dmos). [What is a DMO?](https://github.com/iTwin/pcf/tree/enhance-doc#define-mappings-with-dynamic-mappingobjects-dmo)
+
+There are three types of DMO divided into three separate source files. 
+
+| DMO | Location | Definition |
+| -   | -        | -          |
+| ElementDMO        | dmos/Elements.ts | Handles mappings for subclasses of [BIS Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) |
+| RelationshipDMO   | dmos/Relationships.ts | Handles mappigns for subclasses of [BIS Relationship](https://www.itwinjs.org/reference/imodeljs-backend/relationships/relationship/) |
+| RelatedElementDMO | dmos/RelatedElements.ts | Handles mappings for subclasses of [BIS RelatedElement](https://www.itwinjs.org/reference/imodeljs-common/entities/relatedelement/) |
+
+Once DMOs are defined, we can import them in [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) and attach them to Nodes. [What is a Node?](https://github.com/iTwin/pcf/tree/enhance-doc#sketch-out-imodel-hierarchy-with-nodes-and-attachdmos).
 
 | Class Name | Location | Definition |
 | -          | -        | -          |
 | COBieConnector | [src/COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) | COBieConnector class is where everything is put together and you can readily learn the layout of your iModel by reading it. |
 | BaseApp        | [src/App.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/App.ts#L31) | BaseApp is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... |
 
-## DMOs
 
-| DMO | Location | Definition |
-| -   | -        | -          |
-| ElementDMO        | dmos/Elements.ts        | |
-| RelationshipDMO   | dmos/Relationships.ts   |  |
-| RelatedElementDMO | dmos/RelatedElements.ts |  |
-
-## Nodes
 
 | Node | Definition |
 | -    | -          |
 | SubjectNode | Represents a Subject Element in iModel |
-| LoaderNode  | Represents a RepositoryLink Element in iModel |
 | ModelNode   | Represents a Model & Partition Element in iModel |
+| LoaderNode  | Represents a RepositoryLink Element in iModel |
 | ElementNode | Represents a normal Element in iModel |
 
