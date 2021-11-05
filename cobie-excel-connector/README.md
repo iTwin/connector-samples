@@ -53,29 +53,53 @@ npm run start
 
 # How does it work?
 
-The first place to start is the [dmos directory](https://github.com/iTwin/connector-samples/tree/main/cobie-excel-connector/src/dmos). [What is a DMO?](https://github.com/iTwin/pcf/tree/enhance-doc#define-mappings-with-dynamic-mappingobjects-dmo)
+We will be following the steps described in [PCF tutorial](https://github.com/iTwin/pcf/tree/enhance-doc#tutorial) to explain how the COBie Connector works.
 
-There are three types of DMO divided into three separate source files. 
+### Read from Excel with [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts)
+
+[What is a Loader?](https://github.com/iTwin/pcf/tree/enhance-doc#pick-or-extend-aloader)
+
+COBie files are xlsx files. PCF curates [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts) to allow you to read from any Excel/XLSX file. COBieConnector defines it in [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and it must be wrapped by a LoaderNode to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to always record Loader inside iModels to keep track of data sources.
+
+Loaders are solely responsible for reading from data sources and transforming data into an [IRModel](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel). We're not concerned of schema/mapping at this point.
+
+Now, it's important to pause and learn what an IRModel is. [What is an IRModel?](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel)
+
+### Define mappings with DMO's
+
+[What is a DMO?](https://github.com/iTwin/pcf/tree/enhance-doc#define-mappings-with-dynamic-mappingobjects-dmo)
+
+XLSXLoader transforms each sheet into either IREntity or IRRelationship inside an IRModel stored in memory, and rows into IR Instances. The next step is to map IREntity & IRRelationship to either an existing EC Entity or a new dynamic EC Entity in iModel, and lastly create/update the instances of EC Entity based on IR Instances (represent rows in sheets).
+
+For example, in any COBie file, there's a sheet called "Component", which will be represented by an [IREntity](https://github.com/iTwin/pcf/tree/enhance-doc#pcf-constructs) after XLSXLoader finishes. To map this IR Entity to an Element, we define an [ElementDMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) to achieve that.
 
 | DMO | Location | Definition |
 | -   | -        | -          |
-| ElementDMO        | dmos/Elements.ts | Handles mappings for subclasses of [BIS Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) |
-| RelationshipDMO   | dmos/Relationships.ts | Handles mappigns for subclasses of [BIS Relationship](https://www.itwinjs.org/reference/imodeljs-backend/relationships/relationship/) |
-| RelatedElementDMO | dmos/RelatedElements.ts | Handles mappings for subclasses of [BIS RelatedElement](https://www.itwinjs.org/reference/imodeljs-common/entities/relatedelement/) |
+| ElementDMO        | src/dmos/Elements.ts | Handles mappings for subclasses of [BIS Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) |
+| RelationshipDMO   | src/dmos/Relationships.ts | Handles mappigns for subclasses of [BIS Relationship](https://www.itwinjs.org/reference/imodeljs-backend/relationships/relationship/) |
+| RelatedElementDMO | src/dmos/RelatedElements.ts | Handles mappings for subclasses of [BIS RelatedElement](https://www.itwinjs.org/reference/imodeljs-common/entities/relatedelement/) |
 
-Once DMOs are defined, we can import them in [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) and attach them to Nodes. [What is a Node?](https://github.com/iTwin/pcf/tree/enhance-doc#sketch-out-imodel-hierarchy-with-nodes-and-attachdmos).
-
-| Class Name | Location | Definition |
-| -          | -        | -          |
-| COBieConnector | [src/COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) | COBieConnector class is where everything is put together and you can readily learn the layout of your iModel by reading it. |
-| BaseApp        | [src/App.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/App.ts#L31) | BaseApp is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... |
+There are three types of DMO divided into three separate source files. Once DMOs are defined, we can import them in [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) and attach them to Nodes. 
 
 
+### Define hierarchy with Nodes & attach DMO
 
+[What is a Node?](https://github.com/iTwin/pcf/tree/enhance-doc#sketch-out-imodel-hierarchy-with-nodes-and-attachdmos)
+
+It's time to define the hierarchy of our iModel with Nodes. We must define Nodes top to bottom so that lower-level Nodes can reference them. For example, [Component DMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) is attached to an ElementNode given that Component will be mapped to an Element class. In addition, each ElementNode also requires a reference to a ModelNode so that Element instances can be appropriately placed in a Model.
+
+All the Nodes are defined under [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts). ElementNode, RelationshipNode, and RelatedElementNode can attach ElementDMO, RelationshipDMO, and RelatedElementDMO respectively so that multiple instances of BIS Element, Relationship, RelatedElement can be populated.
+
+### Run Connector
+
+In [App.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/App.ts), BaseApp is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... This file is where you pass in client-specific credentials into your Connector app.
+
+<!--
 | Node | Definition |
 | -    | -          |
 | SubjectNode | Represents a Subject Element in iModel |
 | ModelNode   | Represents a Model & Partition Element in iModel |
 | LoaderNode  | Represents a RepositoryLink Element in iModel |
 | ElementNode | Represents a normal Element in iModel |
+-->
 

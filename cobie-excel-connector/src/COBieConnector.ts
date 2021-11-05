@@ -31,6 +31,8 @@ export class COBieConnector extends pcf.PConnector {
       appVersion: "1.0.0.0",
     });
 
+    // Nodes will be synchronized based on the order they are defined
+
     const subject1 = new pcf.SubjectNode(this, { key: "Duplex-Handover" });
 
     const lnkModel = new pcf.ModelNode(this, { key: "LinkModel1", subject: subject1, modelClass: LinkModel, partitionClass: LinkPartition });
@@ -41,7 +43,7 @@ export class COBieConnector extends pcf.PConnector {
     const grpModel = new pcf.ModelNode(this, { key: "GroupModel1", subject: subject1, modelClass: GroupModel, partitionClass: GroupInformationPartition });
     const docModel = new pcf.ModelNode(this, { key: "DocumentListModel1", subject: subject1, modelClass: DocumentListModel, partitionClass: DocumentPartition });
 
-    new pcf.LoaderNode(this, {
+    const xlsxLoader = new pcf.LoaderNode(this, {
       key: "cobie-xlsx-loader",
       model: lnkModel,
       loader: new pcf.XLSXLoader({
