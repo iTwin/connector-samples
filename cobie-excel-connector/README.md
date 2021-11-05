@@ -59,19 +59,32 @@ We will be following the steps described in [PCF tutorial](https://github.com/iT
 
 [What is a Loader?](https://github.com/iTwin/pcf/tree/enhance-doc#pick-or-extend-aloader)
 
-COBie files are xlsx files. PCF curates [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts) to allow you to read from any Excel/XLSX file. COBieConnector defines it in [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and it must be wrapped by a LoaderNode to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to always record Loader inside iModels to keep track of data sources.
+COBie files are xlsx files. PCF curates [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts) to allow your Connector to read from any Excel/XLSX file. COBieConnector defines it in [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and it must be wrapped by a LoaderNode to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to always persist Loader in iModel to keep track of data sources.
 
-Loaders are solely responsible for reading from data sources and transforming data into an [IRModel](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel). We're not concerned of schema/mapping at this point.
+Loaders are solely responsible for reading from data sources and transforming data into an [IRModel](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel), without concerning of schema & mapping.
 
-Now, it's important to pause and learn what an IRModel is. [What is an IRModel?](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel)
+Before jumping to the next step, it's important to pause and learn what an IRModel is. [What is an IRModel?](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel)
 
 ### Define mappings with DMO's
 
 [What is a DMO?](https://github.com/iTwin/pcf/tree/enhance-doc#define-mappings-with-dynamic-mappingobjects-dmo)
 
-XLSXLoader transforms each sheet into either IREntity or IRRelationship inside an IRModel stored in memory, and rows into IR Instances. The next step is to map IREntity & IRRelationship to either an existing EC Entity or a new dynamic EC Entity in iModel, and lastly create/update the instances of EC Entity based on IR Instances (represent rows in sheets).
+XLSXLoader transforms each sheet into either IREntity or IRRelationship inside an IRModel stored in memory, and rows into IR Instances. The next step is to map IREntity & IRRelationship to either an existing EC Entity or a new dynamic EC Entity in iModel, and lastly create/update the instances of the EC Entities based on IR Instances (represent rows in sheets).
 
-For example, in any COBie file, there's a sheet called "Component", which will be represented by an [IREntity](https://github.com/iTwin/pcf/tree/enhance-doc#pcf-constructs) after XLSXLoader finishes. To map this IR Entity to an Element, we define an [ElementDMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) to achieve that.
+```
+An Excel/XLSX file => an IR Model (Referenced by DMO's)
+Sheets             => IR Entities / IR Relationships
+Rows               => IR Instances
+```
+
+For example, in any COBie file, there's a sheet called "Component", which will be represented by an [IREntity](https://github.com/iTwin/pcf/tree/enhance-doc#pcf-constructs) after XLSXLoader finishes running. To map this IR Entity to an Element, we define an [ElementDMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) that references the name of that IREntity. Since IREntity preserves the names of the Excel sheets, we would use "Component" as the value for the ElementDMO.irEntity field.
+
+```typescript
+export const Component: pcf.ElementDMO = {
+  irEntity: "Component",
+  ...
+}
+```
 
 | DMO | Location | Definition |
 | -   | -        | -          |
@@ -92,7 +105,7 @@ All the Nodes are defined under [COBieConnector.ts](https://github.com/iTwin/con
 
 ### Run Connector
 
-In [App.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/App.ts), BaseApp is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... This file is where you pass in client-specific credentials into your Connector app.
+In [App.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/App.ts), BaseApp class is the driver of your Connector. It takes care of all the steps to sign in, download iModel, etc... This file is where you pass in client-specific credentials & job-specific parameters into your Connector.
 
 <!--
 | Node | Definition |
