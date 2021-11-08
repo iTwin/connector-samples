@@ -90,9 +90,9 @@ export const Component: pcf.ElementDMO = {
 
 | DMO | Location | Definition |
 | -   | -        | -          |
-| ElementDMO        | src/dmos/Elements.ts | Handles mappings for subclasses of [BIS Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) |
-| RelationshipDMO   | src/dmos/Relationships.ts | Handles mappings for subclasses of [BIS Relationship](https://www.itwinjs.org/reference/imodeljs-backend/relationships/relationship/) |
-| RelatedElementDMO | src/dmos/RelatedElements.ts | Handles mappings for subclasses of [BIS RelatedElement](https://www.itwinjs.org/reference/imodeljs-common/entities/relatedelement/) |
+| ElementDMO        | src/dmos/Elements.ts | Handles mappings for subclasses of [Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) |
+| RelationshipDMO   | src/dmos/Relationships.ts | Handles mappings for subclasses of [Relationship](https://www.itwinjs.org/reference/imodeljs-backend/relationships/relationship/) |
+| RelatedElementDMO | src/dmos/RelatedElements.ts | Handles mappings for subclasses of [RelatedElement](https://www.itwinjs.org/reference/imodeljs-common/entities/relatedelement/) |
 
 There are three types of DMO divided into three separate source files. Once DMOs are defined, we can import them in [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L16) and attach them to Nodes. 
 
