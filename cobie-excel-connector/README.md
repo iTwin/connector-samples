@@ -59,11 +59,11 @@ We will be following the steps described in the [PCF tutorial](https://github.co
 
 [What is a Loader?](https://github.com/iTwin/pcf/tree/enhance-doc#pick-or-extend-aloader)
 
-COBie files are xlsx files. PCF curates [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts) to enable COBieConnector to read from any Excel/XLSX file. 
+COBie files are xlsx files. PCF curates [XLSXLoader](https://github.com/iTwin/pcf/blob/main/core/src/loaders/XLSXLoader.ts) to enable COBieConnector to read from any Excel/XLSX file. Note, you could also write your own version of XLSXLoader or extend the existing one to customize the logic of reading from Excel files. (e.g., reading from more than one Excel file)
 
-Loaders are solely responsible for reading from data sources and transforming data into an [IRModel](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel), without concern of schema & mapping.
+Loaders are solely responsible for reading and transforming an external data model into an [IRModel](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel), without concern of schema and mapping.
 
-Before jumping to the next step, it's important to pause and learn what an IRModel is. [What is an IRModel?](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel)
+[What is an IRModel?](https://github.com/iTwin/pcf/tree/enhance-doc#understand-the-irmodel)
 
 ### Define mappings with DMO's
 
@@ -101,15 +101,17 @@ There are three types of DMO divided into three separate source files. Once DMOs
 
 [What is a Node?](https://github.com/iTwin/pcf/tree/enhance-doc#sketch-out-imodel-hierarchy-with-nodes-and-attachdmos)
 
-It's time to define the hierarchy of our iModel with Nodes. We must define Nodes from top to bottom so that lower-level Nodes can reference them. For example, [Component DMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) is attached to an ElementNode given that Component will be mapped to an [Element class](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) (Element class subclasses [the EC Entity class](https://www.itwinjs.org/reference/imodeljs-backend/schema/entity/)). In addition, in the definition of each ElementNode, a reference to a ModelNode must be included so that the Element instances can be appropriately placed in a Model.
+It's time to define the hierarchy of our iModel with Nodes. We must define Nodes from top to bottom so that lower-level Nodes can reference them. For example, [Component DMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) is attached to an ElementNode because Component will be mapped to an [Element class](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) (Element class subclasses [the EC Entity class](https://www.itwinjs.org/reference/imodeljs-backend/schema/entity/)). In addition, the definition of each ElementNode must include a reference to a ModelNode so that the Element instances can be appropriately placed in a Model.
 
-Recall XLSXLoader, which is defined [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and wrapped by a special ElementNode -- LoaderNode -- to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to always persist Loader in iModel to keep track of data sources.
+Recall XLSXLoader, which is defined [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and wrapped by a special ElementNode -- LoaderNode -- to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to persist Loader in iModel to keep track of Loaders.
 
 All the Nodes are defined under [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts). ElementNode, RelationshipNode, and RelatedElementNode can attach ElementDMO, RelationshipDMO, and RelatedElementDMO respectively so that multiple instances of Element, Relationship, RelatedElement classes can be populated.
 
 ### Run COBieConnector
 
 [App.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/App.ts) is the main file and uses the BaseApp class as the driver of COBieConnector. BaseApp takes care of all the steps to sign in, download Briefcase iModel, and purge it when necessary. This file is where you include client-specific credentials & job-specific parameters for COBieConnector.
+
+
 
 <!--
 | Node | Definition |
