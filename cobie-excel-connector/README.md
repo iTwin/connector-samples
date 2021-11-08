@@ -113,8 +113,6 @@ const spaceCategory = new pcf.ElementNode(this, { key: "SpaceCategory", model: d
 const component = new pcf.ElementNode(this, { key: "Component", model: phyModel, dmo: elements.Component, category: spaceCategory });
 ```
 
-Recall XLSXLoader, which is defined [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and wrapped by a special ElementNode -- LoaderNode -- to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to persist Loader in iModel to keep track of Loaders.
-
 All the Nodes are defined under [COBieConnector.ts](https://github.com/iTwin/connector-samples/blob/main/cobie-excel-connector/src/COBieConnector.ts). ElementNode, RelationshipNode, and RelatedElementNode can attach ElementDMO, RelationshipDMO, and RelatedElementDMO respectively so that multiple instances of Element, Relationship, RelatedElement classes can be populated.
 
 ### Run COBieConnector
