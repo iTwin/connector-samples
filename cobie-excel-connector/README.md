@@ -82,6 +82,7 @@ A set of dynamic EC Entity classes represents a dynamic schema in EC terms. [Why
 For example, in any COBie file, there's a sheet called "Component", which will be represented by an [IR Entity](https://github.com/iTwin/pcf/tree/enhance-doc#pcf-constructs) after XLSXLoader finishes running. To map this IR Entity to an EC Entity class, we define an [ElementDMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) that references the name of that IR Entity. Since each IR Entity preserves the name of each Excel sheet, we would use "Component" as the value for the ElementDMO.irEntity field.
 
 ```typescript
+// in dmos/Elements.ts
 export const Component: pcf.ElementDMO = {
   irEntity: "Component",
   ...
@@ -101,7 +102,16 @@ There are three types of DMO divided into three separate source files. Once DMOs
 
 [What is a Node?](https://github.com/iTwin/pcf/tree/enhance-doc#sketch-out-imodel-hierarchy-with-nodes-and-attachdmos)
 
-It's time to define the hierarchy of our iModel with Nodes. We must define Nodes from top to bottom so that lower-level Nodes can reference them. For example, [Component DMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) is attached to an ElementNode because Component will be mapped to an [Element class](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) (Element class subclasses [the EC Entity class](https://www.itwinjs.org/reference/imodeljs-backend/schema/entity/)). In addition, the definition of each ElementNode must include a reference to a ModelNode so that the Element instances can be appropriately placed in a Model.
+It's now time to define the hierarchy of our iModel with Nodes. Nodes must be defined in a top-to-bottom fashion so that the lower-level Nodes can reference the higher-level ones. For example, ModelNodes are defined before ElementNodes because ElementNodes reference them, implicitly meaning a [Model](https://www.itwinjs.org/bis/intro/model-fundamentals/) must be inserted/updated before inserting/updating [Element](https://www.itwinjs.org/bis/intro/element-fundamentals/) instances in it. 
+
+  [Component DMO](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/dmos/Elements.ts#L27) is attached to an ElementNode because the "Component" sheet is mapped to an [Element class](https://www.itwinjs.org/reference/imodeljs-backend/elements/element/) through ComponentDMO (Element class subclasses [the EC Entity class](https://www.itwinjs.org/reference/imodeljs-backend/schema/entity/)), which creates a dynamic EC Entity class "COBieDynamic:Component" that subclasses [PhysicalElement](https://www.itwinjs.org/reference/imodeljs-backend/elements/physicalelement/). A [ModelNode](https://github.com/iTwin/connector-samples/blob/2341379dab47a52b8aa45db35294b660df0806f4/cobie-excel-connector/src/COBieConnector.ts#L40) (with modelClass = PhysicalModel) is a higher-level Node that must be defined prior to Component ElementNode because the definition of each ElementNode must include a reference to a ModelNode so that the Element instances can be appropriately placed in a [Model](https://www.itwinjs.org/bis/intro/model-fundamentals/). The same applies to [Category](https://www.itwinjs.org/bis/intro/categories/).
+
+```typescript
+// in COBieConnector.ts
+const phyModel = new pcf.ModelNode(this, { key: "PhysicalModel1", subject: subject1, modelClass: PhysicalModel, partitionClass: PhysicalPartition });
+const spaceCategory = new pcf.ElementNode(this, { key: "SpaceCategory", model: defModel, dmo: elements.SpaceCategory });
+const component = new pcf.ElementNode(this, { key: "Component", model: phyModel, dmo: elements.Component, category: spaceCategory });
+```
 
 Recall XLSXLoader, which is defined [here](https://github.com/iTwin/connector-samples/blob/d5dd3d2b78b3372f288e99ba4e256d3151dd0f52/cobie-excel-connector/src/COBieConnector.ts#L47) and wrapped by a special ElementNode -- LoaderNode -- to be persisted as a [RepositoryLink Element](https://www.itwinjs.org/reference/imodeljs-backend/elements/repositorylink/) in iModel. It's always a good practice to persist Loader in iModel to keep track of Loaders.
 
