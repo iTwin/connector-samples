@@ -10,12 +10,15 @@ import * as path from "path";
 
 export async function main() {
   const jobArgs = new pcf.JobArgs({
-    subjectKey: "cobie-subject-1",
+    // References a SubjectNode
+    subjectKey: "Duplex-Handover",
+    // Points to a compiled connector class file
     connectorPath: path.join(__dirname, "COBieConnector.js"),
     connection: {
+      // References a LoaderNode
       loaderKey: "cobie-xlsx-loader",
       kind: "pcf_file_connection",
-      filepath: path.join(__dirname, "../assets/<source XLSX file name>"),
+      filepath: path.join(__dirname, "../assets/2012-03-23-Duplex-Handover.xlsx"),
     },
   });
   const hubArgs = new pcf.HubArgs({
@@ -23,9 +26,9 @@ export async function main() {
     iModelId: "<your iModel ID>",
     clientConfig: {
       clientId: "<your client ID>",
-      redirectUri: "<your client redirect URI>",
-      scope: "<your client scope>",
-      issuerUrl: "https://ims.bentley.com",
+      redirectUri: "http://localhost:3000/signin-callback",
+      scope: "openid projects:modify users:read itwinjs email organization profile projects:read",
+      issuerUrl: "https://qa-ims.bentley.com",
     },
   });
   const app = new pcf.BaseApp(jobArgs, hubArgs);
