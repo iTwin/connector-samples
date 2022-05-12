@@ -11,13 +11,15 @@
   "license": "MIT",
   "dependencies": {
     "@bentley/aec-units-schema": "1.0.3",
-    "@bentley/functional-schema": "1.0.3",
     "@bentley/building-spatial-schema": "1.0.0",
+    "@bentley/functional-schema": "1.0.3",
     "@bentley/spatial-composition-schema": "1.0.0",
-    "@itwin/pcf": "0.1.2"
+    "@itwin/core-backend": "^3.0.0",
+    "@itwin/ecschema-metadata": "^3.0.0",
+    "@itwin/pcf": "file:../../pcf/core"
   },
   "devDependencies": {
-    "@bentley/build-tools": "2.16.9",
+    "@bentley/build-tools": "^2.19.37",
     "@types/node": "10.14.1",
     "typescript": "~4.3.0"
   }

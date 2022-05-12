@@ -11,7 +11,7 @@ import {
   DefinitionModel, DefinitionPartition, PhysicalModel, PhysicalPartition, SpatialLocationModel, SpatialLocationPartition,
   InformationRecordModel, InformationRecordPartition, GroupModel, GroupInformationPartition, DocumentListModel, DocumentPartition, 
   LinkModel, LinkPartition,
-} from "@bentley/imodeljs-backend";
+} from "@itwin/core-backend";
 
 export class COBieConnector extends pcf.PConnector {
   public async form() {

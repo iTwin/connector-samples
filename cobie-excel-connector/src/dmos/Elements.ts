@@ -3,8 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import * as pcf from "@itwin/pcf";
-import { GeometryStreamBuilder, GeometryParams } from "@bentley/imodeljs-common";
-import { Point3d, LineString3d } from "@bentley/geometry-core";
+import { GeometryStreamBuilder, GeometryParams } from "@itwin/core-common";
+import { Point3d, LineString3d } from "@itwin/core-geometry";
 
 export const FacilityCategory: pcf.ElementDMO = {
   irEntity: "Facility",

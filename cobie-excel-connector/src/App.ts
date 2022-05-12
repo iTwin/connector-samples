@@ -11,12 +11,12 @@ import * as path from "path";
 export async function main() {
   const jobArgs = new pcf.JobArgs({
     // References a SubjectNode
-    subjectKey: "Duplex-Handover",
+    subjectNodeKey: "Duplex-Handover",
     // Points to a compiled connector class file
     connectorPath: path.join(__dirname, "COBieConnector.js"),
     connection: {
       // References a LoaderNode
-      loaderKey: "cobie-xlsx-loader",
+      loaderNodeKey: "cobie-xlsx-loader",
       kind: "pcf_file_connection",
       filepath: path.join(__dirname, "../assets/2012-03-23-Duplex-Handover.xlsx"),
     },
@@ -27,12 +27,12 @@ export async function main() {
     clientConfig: {
       clientId: "<your client ID>",
       redirectUri: "http://localhost:3000/signin-callback",
-      scope: "openid projects:modify users:read itwinjs email organization profile projects:read",
+      scope: "imodels:modify imodels:read",
       issuerUrl: "https://qa-ims.bentley.com",
     },
   });
-  const app = new pcf.BaseApp(jobArgs, hubArgs);
-  await app.run();
+  const app = new pcf.BaseApp(hubArgs);
+  await app.runConnectorJob(jobArgs);
 }
 
 main().catch((err) => console.log(err.message));
