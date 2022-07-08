@@ -129,7 +129,7 @@ export class COBieConnector extends pcf.PConnector {
   }
 }
 
-export async function getBridgeInstance() {
+export async function getConnectorInstance() {
   const connector = new COBieConnector();
   await connector.form();
   return connector;
