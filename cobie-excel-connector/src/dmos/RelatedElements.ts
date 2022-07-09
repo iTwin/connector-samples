@@ -87,7 +87,7 @@ export const ComponentOwnsType: pcf.RelatedElementDMO = {
       polymorphic: true,
       multiplicity: "(0..1)",
       roleLabel: "owned by element",
-      abstractConstraint: "BisCore:PhysicalElement",
+      abstractConstraint: "BisCore:PhysicalType",
       constraintClasses: ["COBieDynamic:Type"],
     },
   },
