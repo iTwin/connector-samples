@@ -21,7 +21,7 @@ export const ComponentAssemblesComponents: pcf.RelatedElementDMO = {
     source: {
       polymorphic: true,
       multiplicity: "(0..1)",
-      roleLabel: "assmbles",
+      roleLabel: "assembles",
       abstractConstraint: PhysicalElement.classFullName,
       constraintClasses: ["COBieDynamic:Component"],
     },
