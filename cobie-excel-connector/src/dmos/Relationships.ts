@@ -3,8 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import * as pcf from "@itwin/pcf";
-import { PhysicalElement, GroupInformationElement, SpatialLocationElement } from "@bentley/imodeljs-backend";
-import { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } from "@bentley/ecschema-metadata";
+import { PhysicalElement, GroupInformationElement, SpatialLocationElement } from "@itwin/core-backend";
+import { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } from "@itwin/ecschema-metadata";
 
 export const ComponentConnectsToComponent: pcf.RelationshipDMO = {
   irEntity: "Connection",

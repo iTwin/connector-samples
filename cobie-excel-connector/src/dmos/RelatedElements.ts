@@ -3,8 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import * as pcf from "@itwin/pcf";
-import { PhysicalElement, PhysicalType } from "@bentley/imodeljs-backend";
-import { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } from "@bentley/ecschema-metadata";
+import { PhysicalElement, PhysicalType } from "@itwin/core-backend";
+import { StrengthDirection, strengthDirectionToString, strengthToString, StrengthType } from "@itwin/ecschema-metadata";
 
 export const ComponentAssemblesComponents: pcf.RelatedElementDMO = {
   irEntity: "Assembly",
@@ -21,7 +21,7 @@ export const ComponentAssemblesComponents: pcf.RelatedElementDMO = {
     source: {
       polymorphic: true,
       multiplicity: "(0..1)",
-      roleLabel: "assmbles",
+      roleLabel: "assembles",
       abstractConstraint: PhysicalElement.classFullName,
       constraintClasses: ["COBieDynamic:Component"],
     },

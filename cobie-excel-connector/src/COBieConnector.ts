@@ -11,7 +11,7 @@ import {
   DefinitionModel, DefinitionPartition, PhysicalModel, PhysicalPartition, SpatialLocationModel, SpatialLocationPartition,
   InformationRecordModel, InformationRecordPartition, GroupModel, GroupInformationPartition, DocumentListModel, DocumentPartition, 
   LinkModel, LinkPartition,
-} from "@bentley/imodeljs-backend";
+} from "@itwin/core-backend";
 
 export class COBieConnector extends pcf.PConnector {
   public async form() {
@@ -69,7 +69,7 @@ export class COBieConnector extends pcf.PConnector {
     const zone = new pcf.ElementNode(this, { key: "Zone", model: grpModel, dmo: elements.Zone });
     const system = new pcf.ElementNode(this, { key: "System", model: grpModel, dmo: elements.System });
     const doc = new pcf.ElementNode(this, { key: "COBieDocument", model: docModel, dmo: elements.COBieDocument });
-    const assmebly = new pcf.ElementNode(this, { key: "Assebly", model: infModel, dmo: elements.Assembly });
+    const assembly = new pcf.ElementNode(this, { key: "Assembly", model: infModel, dmo: elements.Assembly });
     const attribute = new pcf.ElementNode(this, { key: "Attribute", model: infModel, dmo: elements.Attribute });
     const contact = new pcf.ElementNode(this, { key: "Contact", model: infModel, dmo: elements.Contact });
     const connection = new pcf.ElementNode(this, { key: "Connection", model: infModel, dmo: elements.Connection });
@@ -129,7 +129,7 @@ export class COBieConnector extends pcf.PConnector {
   }
 }
 
-export async function getBridgeInstance() {
+export async function getConnectorInstance() {
   const connector = new COBieConnector();
   await connector.form();
   return connector;
