@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "COBie Excel Connector",
   "scripts": {
-    "start": "tsc && node ./lib/App.js",
+    "start": "node ./lib/App.js",
     "build": "tsc",
     "watch": "tsc -w"
   },
@@ -16,7 +16,9 @@
     "@bentley/spatial-composition-schema": "1.0.0",
     "@itwin/core-backend": "^3.0.0",
     "@itwin/ecschema-metadata": "^3.0.0",
-    "@itwin/pcf": "0.3.2"
+    "@itwin/imodels-access-backend": "^1.0.2",
+    "@itwin/imodels-client-authoring": "^1.1.0",
+    "@itwin/pcf": "0.3.0-1"
   },
   "devDependencies": {
     "@itwin/build-tools": "^3.0.2",
