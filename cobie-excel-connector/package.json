@@ -16,9 +16,7 @@
     "@bentley/spatial-composition-schema": "1.0.0",
     "@itwin/core-backend": "^3.0.0",
     "@itwin/ecschema-metadata": "^3.0.0",
-    "@itwin/imodels-access-backend": "^1.0.2",
-    "@itwin/imodels-client-authoring": "^1.1.0",
-    "@itwin/pcf": "0.3.0-1"
+    "@itwin/pcf": "0.3.0-2"
   },
   "devDependencies": {
     "@itwin/build-tools": "^3.0.2",
