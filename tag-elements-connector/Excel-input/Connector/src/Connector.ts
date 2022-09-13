@@ -5,13 +5,17 @@ import * as path from "path";
 import { LinkPartition, LinkModel, FunctionalModel, FunctionalPartition } from "@itwin/core-backend";
 export class Connector extends pcf.PConnector {
   public async form() {
+    let processFunctionalSchema = require.resolve('@bentley/process-functional-schema/ProcessFunctional.ecschema.xml');
+    let schemaPaths = [];
+    schemaPaths.push(processFunctionalSchema);
+
     new pcf.PConnectorConfig(this, {
       connectorName: "Connector",
       appId: "Tagging-Connector",
       appVersion: "2.0.0.0",
 
       // schemas to import
-      domainSchemaPaths: [path.join(__dirname, "./assets/domain_schemas/ProcessFunctional.ecschema.xml")],
+      domainSchemaPaths: schemaPaths,
     });
     // define subject name
     const subject1 = new pcf.SubjectNode(this, { key: "Subject-Tag" });

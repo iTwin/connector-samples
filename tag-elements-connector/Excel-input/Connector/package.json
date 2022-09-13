@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@bentley/bentleyjs-core": "^2.19.6",
+    "@bentley/process-functional-schema": "^1.0.1",
     "@itwin/pcf": "^0.3.0-3",
     "xlsx": "^0.17.0"
   },

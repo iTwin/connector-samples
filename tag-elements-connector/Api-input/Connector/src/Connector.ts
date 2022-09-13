@@ -3,15 +3,20 @@ import * as pcf from "@itwin/pcf";
 
 import { LinkPartition, LinkModel, FunctionalModel, FunctionalPartition } from "@itwin/core-backend";
 import { apiLoader } from "./utilities/apiLoader";
+
 export class Connector extends pcf.PConnector {
   public async form() {
+    let processFunctionalSchema = require.resolve('@bentley/process-functional-schema/ProcessFunctional.ecschema.xml');
+    let schemaPaths = [];
+    schemaPaths.push(processFunctionalSchema);
+
     new pcf.PConnectorConfig(this, {
       connectorName: "Connector",
       appId: "Tagging-Connector",
       appVersion: "2.0.0.0",
 
       // schemas to import
-      domainSchemaPaths: [],
+      domainSchemaPaths: schemaPaths,
     });
     // define subject name
     const subject1 = new pcf.SubjectNode(this, { key: "Subject-Tag" });

@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@bentley/bentleyjs-core": "^2.19.6",
-    "@itwin/pcf": "^0.3.0-3"    
+    "@bentley/process-functional-schema": "^1.0.1",
+    "@itwin/pcf": "^0.3.0-3"
   },
   "devDependencies": {
     "@bentley/build-tools": "^2.16.0",
