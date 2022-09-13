@@ -14,7 +14,7 @@ node --version
 npm --version
 
 # clone repo
-git clone https://github.com/ashish-srivastava-dev/ConnectorSample.git
+git clone https://github.com/iTwin/connector-samples.git
 ```
 
 ## Run Connector
@@ -80,7 +80,7 @@ If there is input data stored in json file, refer the [App.ts](./Json-input/Conn
 
 ### API input
 
-If the external data is fetched from API, (for demonstrating in the sample) [json server](https://www.npmjs.com/package/json-server) is used to generate a Mock API data. For running json server go to [json server](./Api-input/Connector/src/assets/json-server/) folder and run the following command.
+If the external data is fetched from API, (for demonstrating in the sample) [json server](https://www.npmjs.com/package/json-server) is used to generate a Mock API data. For running json server go to [json server](./Api-input/Mock-API/json-server/) folder and run the following command.
 
 ```sh
 json-server --watch db.json --port 3004
