@@ -1,6 +1,5 @@
 import * as elements from "./dmos/Elements";
 import * as pcf from "@itwin/pcf";
-import * as path from "path";
 
 import { LinkPartition, LinkModel, FunctionalModel, FunctionalPartition } from "@itwin/core-backend";
 export class Connector extends pcf.PConnector {
