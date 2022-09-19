@@ -1,0 +1,139 @@
+{
+  "taggedElements": {
+    "Vessel": [
+      {
+        "TAG_NO": "A12-HV-119",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "IR Pump11"
+      },
+      {
+        "TAG_NO": "A12-HV-1112",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "IR Pump11"
+      },
+      {
+        "TAG_NO": "A12-HV-211",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "IR Pump11"
+      },
+      {
+        "TAG_NO": "A12-HV-217",
+        "Description": "Rotating Equipment 1",
+        "Manufacturer": "GouldNew1"
+      },
+      {
+        "TAG_NO": "A12-HV-241",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "GouldNew1"
+      },
+      {
+        "TAG_NO": "A12-HV-247",
+        "Description": "Rotating Equipment 1",
+        "Manufacturer": "IR Pump11"
+      },
+      {
+        "TAG_NO": "A12-HV-271",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "GouldNew1"
+      },
+      {
+        "TAG_NO": "A12-HV-301",
+        "Description": "Heating And Cooling Facilities 1",
+        "Manufacturer": "GouldNew1"
+      },
+      {
+        "TAG_NO": "A12-HV-307",
+        "Description": "Rotating Equipment 1",
+        "Manufacturer": "IR Pump441"
+      }
+    ],
+    "Cooler": [
+      {
+        "TAG_NO": "A10-HV-31",
+        "Description": "Cooler",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-331",
+        "Description": "Cooler",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-63",
+        "Description": "Cooler",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-183",
+        "Description": "Cooler",
+        "Manufacturer": "IR Pump1"
+      }
+    ],
+    "Chiller": [
+      {
+        "TAG_NO": "A10-HV-41",
+        "Description": "Chiller",
+        "Manufacturer": "IR Pump1"
+      },
+      {
+        "TAG_NO": "A10-HV-341",
+        "Description": "Chiller",
+        "Manufacturer": "IR Pump5"
+      },
+      {
+        "TAG_NO": "A10-HV-94",
+        "Description": "Chiller",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-124",
+        "Description": "Chiller",
+        "Manufacturer": "GouldNew"
+      }
+    ],
+    "Blower": [
+      {
+        "TAG_NO": "A10-HV-81",
+        "Description": "Blower",
+        "Manufacturer": "IR Pump1"
+      },
+      {
+        "TAG_NO": "A10-HV-1291",
+        "Description": "Blower",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-121",
+        "Description": "Blower",
+        "Manufacturer": "GouldNew"
+      }
+    ],
+    "Heat_Exchanger": [
+      {
+        "TAG_NO": "A10-HV-21",
+        "Description": "Heat Exchanger",
+        "Manufacturer": "IR Pump1"
+      },
+      {
+        "TAG_NO": "A10-HV-1221",
+        "Description": "Heat Exchanger",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-1521",
+        "Description": "Heat Exchanger",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-1821",
+        "Description": "Heat Exchanger",
+        "Manufacturer": "GouldNew"
+      },
+      {
+        "TAG_NO": "A10-HV-212",
+        "Description": "Heat Exchanger",
+        "Manufacturer": "IR Pump1"
+      }
+    ]
+  }
+}
