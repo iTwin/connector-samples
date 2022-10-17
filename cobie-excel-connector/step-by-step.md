@@ -1,4 +1,8 @@
-# Table of Contents
+# Running the COBie Connector
+
+A Step by Step Guide
+
+## Table of Contents
 
 [Introduction](#introduction)
 
@@ -65,49 +69,43 @@ First you must create a client at [iTwin Platform
 (bentley.com)](https://developer.bentley.com/)
 
 ![A screenshot of a computer Description automatically generated with
-medium confidence](media/image1.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+medium confidence](media/picture1.jpg)
 
 ![A screenshot of a computer screen Description automatically
-generated](media/image2.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture2.jpg)
 
 Figure 1 Login and select \'My Apps\'
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image3.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture3.jpg)
 
 Figure 2 Press 'Register New'
 
 Interactive
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image4.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture4.jpg)
 
 Figure 3 For an interactive authentication scheme, select
 "desktop/mobile"
 
 ![Graphical user interface, text, application, email Description
-automatically generated](media/image5.JPG){width="6.5in" height="4.9in"}
+automatically generated](media/picture5.JPG)
 
 Figure 4 Use the redirectUri and scopes in App.ts
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image6.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture6.jpg)
 
 Figure 5 - Once you save your native application, copy the client id
 
 ![Text Description automatically generated with medium
-confidence](media/image7.JPG){width="6.5in"
-height="1.9805555555555556in"}
+confidence](media/picture7.JPG)
 
 Figure 6 Native client id goes here.
 
 ![Graphical user interface, website Description automatically
-generated](media/image8.JPG){width="6.5in" height="3.841666666666667in"}
+generated](media/picture8.JPG)
 
 Figure 7 Interactive sign in with native app
 
@@ -117,8 +115,7 @@ For a non-interactive authentication scheme, select "Service
 Application"
 
 ![Graphical user interface, application Description automatically
-generated](media/image9.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture9.jpg)
 
 1. Select 'Service'
 
@@ -132,8 +129,7 @@ height="3.5208333333333335in"}
 5. Press 'Save'
 
 ![Graphical user interface, application Description automatically
-generated](media/image10.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture10.jpg)
 
 Figure 8 Important follow the instruction and backup this secret -
 you'll need it later
@@ -142,14 +138,13 @@ Note: you can regenerate the client secret if you lose it.
 
 1. Dismiss this form once you've backed up the client secret
 
-![](media/image11.jpg){width="6.5in" height="1.6954549431321084in"}
+![Now that your model is created, press "manage participants"](media/picture11.jpg)
 
-Figure 9 Copy the string beginning w \'service-\' from the Client ID
+Figure 9 Copy the string beginning w 'service-' from the Client ID
 field from your newly created app
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image12.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture12.jpg)
 
 Figure 10 Copy the client email too, you'll need to add it as a member
 of your project.
@@ -163,11 +158,9 @@ Next you need a Project and iModel to "connect" or publish your data to.
 You can create a new iModel without leaving developer.bentley.com
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image13.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture13.jpg)
 
-![](media/image14.jpg){width="6.496504811898513in"
-height="3.5208333333333335in"}
+![Copy iTwin (Project) ID and iModel ID](media/picture14.jpg)
 
 Figure Copy iTwin (Project) ID and iModel ID
 
@@ -175,18 +168,16 @@ For service clients (non-interactive) only, the client email must be
 added to the project as a participant like any other team member that
 needs write permissions.
 
-![](media/image15.jpeg){width="6.5in" height="2.3248173665791776in"}
+![Now that your model is created, press "manage participants"](media/picture15.jpg)
 
-Figure 12 Now that your model is created, press \"manage participants\"
+Figure 12 Now that your model is created, press "manage participants"
 
 ![Graphical user interface, application Description automatically
-generated](media/image16.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture16.jpg)
 
 Figure 13 Add service client email here.
 
-![](media/image17.jpeg){width="4.3538451443569555in"
-height="2.3583333333333334in"}
+![locate your new iModel on the Hub](media/picture17.jpg)
 
 Figure 14 locate your new iModel on the Hub at [Bentley Cloud
 Services](https://connect.bentley.com/SelectProject/Index)
@@ -198,8 +189,7 @@ npm install
 ## Building
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image18.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture18.jpg)
 
 Figure Edit App.ts with Project iModel and client id and client secret
 for non-interactive app
@@ -209,26 +199,22 @@ npm run build
 ## Running
 
 ![Graphical user interface, text, application Description automatically
-generated](media/image19.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture19.jpg)
 
 Figure 16 npm run start
 
 ![Text Description automatically
-generated](media/image20.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture20.jpg)
 
 Figure 17 Connector Job Completed
 
 ![Graphical user interface, text, application, email Description
-automatically generated](media/image21.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+automatically generated](media/picture21.jpg)
 
 Figure 18 Review Changes in iModel
 
 ![Graphical user interface, application Description automatically
-generated](media/image22.jpeg){width="6.5in"
-height="3.5208333333333335in"}
+generated](media/picture22.jpg)
 
 Figure 19 Review components in model tree
 
