@@ -10,6 +10,10 @@ A Step by Step Guide
 
 [Set up user, model, project, auth client](#set-up-user-model-project-auth-client)
 
+[Interactive](#interactive)
+
+[Non-interactive](#non-interactive)
+
 [Installing](#installing)
 
 [Building](#building)
@@ -81,7 +85,9 @@ generated](media/picture3.jpg)
 
 Figure 2 Press 'Register New'
 
-Interactive
+### Interactive
+
+Follow these steps to create a native application for an interactive workflow.
 
 ![Graphical user interface, text, application Description automatically
 generated](media/picture4.jpg)
@@ -109,7 +115,7 @@ generated](media/picture8.JPG)
 
 Figure 7 Interactive sign in with native app
 
-Non-interactive
+### Non-interactive
 
 For a non-interactive authentication scheme, select "Service
 Application"
