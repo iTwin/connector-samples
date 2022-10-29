@@ -1,33 +1,38 @@
+import { DbResult, Logger } from "@bentley/bentleyjs-core";
 import { APIConnection, IREntity, IRInstance, IRRelationship, Loader, LogCategory } from "@itwin/pcf";
 
 export class apiLoader extends Loader {
 
   public json: any = {};
 
-  protected async _open(con: APIConnection): Promise<void> {
+  private getDataFromDB = async () => {
     const sql = require('mssql')
     const sqlConfig = {
-      user: '',
-      password: '',
-      server: '',
-      database: '',
+      user: "<SQL login>",
+      password: "<SQL password>",
+      server: "<SQL database server>",
+      database: "<Database name>",
       options: {
         encrypt: true,
         trustServerCertificate: false
       },
-      connectionString: "Server=#{server}\\sql;Database=#{database};Uid=#{user};Pwd=#{password};Encrypt=#{encrypt};TrustServerCertificate=#{trustServerCertificate}"
+      // connectionString: "Server=#{server}\\sql;Database=#{database};Uid=#{user};Pwd=#{password};Encrypt=#{encrypt};TrustServerCertificate=#{trustServerCertificate}"
     };
-    sql.connect(sqlConfig).then(() => {
-      return sql.query`SELECT * FROM Vessel FOR JSON PATH,ROOT('Vessel')`
-    }).then((result: any) => {
-      console.dir(result)
-    }).catch((err: any) => {
-      console.log(err)
-    })
+    let result;
+    try {
+      console.log("sql connecting......")
+      let pool = await sql.connect(sqlConfig)
+      result = await pool.request()
+        .query(`SELECT * FROM Vessel`)  // Vessel is my database table name
+    } catch (err) {
+      console.log(err);
+    }
+    return result;
+  };
 
-    sql.on('error', (err: any) => {
-      console.log(err)
-    })
+  protected async _open(con: APIConnection): Promise<void> {
+   let data = await this.getDataFromDB();
+   this.json = {"Vessel": data["recordset"]};
   }
 
   protected async _close(): Promise<void> {
