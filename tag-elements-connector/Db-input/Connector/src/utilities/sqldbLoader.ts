@@ -1,7 +1,7 @@
 import { Logger } from "@bentley/bentleyjs-core";
 import { APIConnection, IREntity, IRInstance, IRRelationship, Loader, LogCategory } from "@itwin/pcf";
 
-export class apiLoader extends Loader {
+export class sqlLoader extends Loader {
   public json: any = {};
   public tables: any = [];
   public pool: any;

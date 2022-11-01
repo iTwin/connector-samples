@@ -2,7 +2,7 @@ import * as elements from "./dmos/Elements";
 import * as pcf from "@itwin/pcf";
 
 import { LinkPartition, LinkModel, FunctionalModel, FunctionalPartition } from "@itwin/core-backend";
-import { apiLoader } from "./utilities/sqldbLoader";
+import { sqlLoader } from "./utilities/sqldbLoader";
 
 export class Connector extends pcf.PConnector {
   public async form() {
@@ -24,9 +24,9 @@ export class Connector extends pcf.PConnector {
     const linkModel = new pcf.ModelNode(this, { key: "LinkModel1", subject: subject1, modelClass: LinkModel, partitionClass: LinkPartition });
 
     new pcf.LoaderNode(this, {
-      key: "api-loader",
+      key: "sql-loader",
       model: linkModel,
-      loader: new apiLoader({
+      loader: new sqlLoader({
         format: "json",
         entities: ["Vessel", "Heat_Exchanger", "Cooler", "Chiller", "Blower"],
         relationships: [],
