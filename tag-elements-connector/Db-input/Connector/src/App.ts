@@ -13,9 +13,9 @@ export async function main() {
     subjectNodeKey: "Subject-Tag",
     connection: {
       // references an existing loader defined in Connector.ts 
-      loaderNodeKey: "api-loader",
+      loaderNodeKey: "sql-loader",
       kind: "pcf_api_connection", 
-      baseUrl: ""    
+      baseUrl: "Server=#{server}\\sql;Database=#{database};Uid=#{user};Pwd=#{password};Encrypt=#{encrypt};TrustServerCertificate=#{trustServerCertificate}"    
     },
   });
 

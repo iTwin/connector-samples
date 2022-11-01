@@ -2,28 +2,25 @@ import { Logger } from "@bentley/bentleyjs-core";
 import { APIConnection, IREntity, IRInstance, IRRelationship, Loader, LogCategory } from "@itwin/pcf";
 
 export class apiLoader extends Loader {
-
   public json: any = {};
-
-  private getDataFromDB = async () => {
-    const sql = require('mssql')
-    const sqlConfig = {
-      user: "<SQL login>",
-      password: "<SQL password>",
-      server: "<SQL database server>",
-      database: "<Database name>",
-      options: {
-        encrypt: true,
-        trustServerCertificate: false
-      },
-      // connectionString: "Server=#{server}\\sql;Database=#{database};Uid=#{user};Pwd=#{password};Encrypt=#{encrypt};TrustServerCertificate=#{trustServerCertificate}"
-    };
-    let result;
+  public tables: any = [];
+  public pool: any;
+  
+  private getDataFromDB = async (connectionString: string) => {
+    const sql = require('mssql');
+    let result = [];
     try {
       Logger.logInfo(LogCategory.PCF, "Connecting to MSSQL database...");
-      let pool = await sql.connect(sqlConfig);
-      result = await pool.request()
-        .query(`SELECT * FROM Vessel`);  // Vessel is my database table name
+      this.pool = await sql.connect(connectionString);
+      let res = (await this.pool.request()
+        .query(`SELECT TABLE_NAME FROM information_schema.tables`))
+      for (let index = 1; index < res.recordset.length; index++) {
+        this.tables.push(res.recordset[index].TABLE_NAME);
+      }
+      for (let index = 0; index < this.tables.length; index++) {
+        result.push(await this.pool.request()
+          .query(`SELECT * FROM ${this.tables[index]}`));
+      }
     } catch (err: any) {
       Logger.logError(LogCategory.PCF, err);
     }
@@ -31,8 +28,12 @@ export class apiLoader extends Loader {
   };
 
   protected async _open(con: APIConnection): Promise<void> {
-   let data = await this.getDataFromDB();
-   this.json = {"Vessel": data["recordset"]};
+    let data = await this.getDataFromDB(con.baseUrl);
+    for (let index = 0; index < data.length; index++) {
+      this.json[this.tables[index]] = data[index]["recordset"]
+    }
+    Logger.logInfo(LogCategory.PCF, JSON.stringify(this.json));
+    this.pool.close();
   }
 
   protected async _close(): Promise<void> {
