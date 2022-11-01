@@ -32,7 +32,7 @@ export class apiLoader extends Loader {
     for (let index = 0; index < data.length; index++) {
       this.json[this.tables[index]] = data[index]["recordset"]
     }
-    Logger.logInfo(LogCategory.PCF, JSON.stringify(this.json));
+    console.log(this.json);
     this.pool.close();
   }
 
