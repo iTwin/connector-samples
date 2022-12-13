@@ -80,10 +80,15 @@ If there is input data stored in json file, refer the [App.ts](./Json-input/Conn
 
 ### API input
 
-If the external data is fetched from API, (for demonstrating in the sample) [json server](https://www.npmjs.com/package/json-server) is used to generate a Mock API data. For running json server go to [json server](./Api-input/Mock-API/json-server/) folder and run the following command.
+API input connector sample can be used when the external data is fetched from API. [Json server](https://www.npmjs.com/package/json-server) is used to host Mock API for fetching data in this sample. For running json server go to [json server](./Api-input/Mock-API/json-server/) folder and execute the following command.
 
 ```sh
 json-server --watch db.json --port 3004
 ```
 
 Refer the [App.ts](./Api-input/Connector/src/App.ts) for API-input.
+
+### Database input
+
+For workflows where it is required to retrieve data from a database and store that in iModel,
+[Db-input](./Db-input) connector sample should be used. This particular sample is written using MSSQL database as input data source, but the same can be customized for any other database as well. [sqlLoader](./Db-input/Connector/src/utilities/sqldbLoader.ts) needs to be modified for working with other databases.
