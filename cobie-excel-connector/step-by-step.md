@@ -73,15 +73,15 @@ First you must create a client at [iTwin Platform
 (bentley.com)](https://developer.bentley.com/)
 
 ![A screenshot of a computer Description automatically generated with
-medium confidence](media/picture1.jpg)
+medium confidence](media/Picture1.jpg)
 
 ![A screenshot of a computer screen Description automatically
-generated](media/picture2.jpg)
+generated](media/Picture2.jpg)
 
 Figure 1 Login and select \'My Apps\'
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture3.jpg)
+generated](media/Picture3.jpg)
 
 Figure 2 Press 'Register New'
 
@@ -90,28 +90,28 @@ Figure 2 Press 'Register New'
 Follow these steps to create a native application for an interactive workflow.
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture4.jpg)
+generated](media/Picture4.jpg)
 
 Figure 3 For an interactive authentication scheme, select
 "desktop/mobile"
 
 ![Graphical user interface, text, application, email Description
-automatically generated](media/picture5.JPG)
+automatically generated](media/Picture5.JPG)
 
 Figure 4 Use the redirectUri and scopes in App.ts
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture6.jpg)
+generated](media/Picture6.jpg)
 
 Figure 5 - Once you save your native application, copy the client id
 
 ![Text Description automatically generated with medium
-confidence](media/picture7.JPG)
+confidence](media/Picture7.JPG)
 
 Figure 6 Native client id goes here.
 
 ![Graphical user interface, website Description automatically
-generated](media/picture8.JPG)
+generated](media/Picture8.JPG)
 
 Figure 7 Interactive sign in with native app
 
@@ -121,7 +121,7 @@ For a non-interactive authentication scheme, select "Service
 Application"
 
 ![Graphical user interface, application Description automatically
-generated](media/picture9.jpg)
+generated](media/Picture9.jpg)
 
 1. Select 'Service'
 
@@ -135,7 +135,7 @@ generated](media/picture9.jpg)
 5. Press 'Save'
 
 ![Graphical user interface, application Description automatically
-generated](media/picture10.jpg)
+generated](media/Picture10.jpg)
 
 Figure 8 Important follow the instruction and backup this secret -
 you'll need it later
@@ -144,13 +144,13 @@ Note: you can regenerate the client secret if you lose it.
 
 1. Dismiss this form once you've backed up the client secret
 
-![Now that your model is created, press "manage participants"](media/picture11.jpg)
+![Now that your model is created, press "manage participants"](media/Picture11.jpg)
 
 Figure 9 Copy the string beginning w 'service-' from the Client ID
 field from your newly created app
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture12.jpg)
+generated](media/Picture12.jpg)
 
 Figure 10 Copy the client email too, you'll need to add it as a member
 of your project.
@@ -164,9 +164,9 @@ Next you need a Project and iModel to "connect" or publish your data to.
 You can create a new iModel without leaving developer.bentley.com
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture13.jpg)
+generated](media/Picture13.jpg)
 
-![Copy iTwin (Project) ID and iModel ID](media/picture14.jpg)
+![Copy iTwin (Project) ID and iModel ID](media/Picture14.jpg)
 
 Figure Copy iTwin (Project) ID and iModel ID
 
@@ -174,16 +174,16 @@ For service clients (non-interactive) only, the client email must be
 added to the project as a participant like any other team member that
 needs write permissions.
 
-![Now that your model is created, press "manage participants"](media/picture15.jpg)
+![Now that your model is created, press "manage participants"](media/Picture15.jpg)
 
 Figure 12 Now that your model is created, press "manage participants"
 
 ![Graphical user interface, application Description automatically
-generated](media/picture16.jpg)
+generated](media/Picture16.jpg)
 
 Figure 13 Add service client email here.
 
-![locate your new iModel on the Hub](media/picture17.jpg)
+![locate your new iModel on the Hub](media/Picture17.jpg)
 
 Figure 14 locate your new iModel on the Hub at [Bentley Cloud
 Services](https://connect.bentley.com/SelectProject/Index)
@@ -195,7 +195,7 @@ npm install
 ## Building
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture18.jpg)
+generated](media/Picture18.jpg)
 
 Figure Edit App.ts with Project iModel and client id and client secret
 for non-interactive app
@@ -205,22 +205,22 @@ npm run build
 ## Running
 
 ![Graphical user interface, text, application Description automatically
-generated](media/picture19.jpg)
+generated](media/Picture19.jpg)
 
 Figure 16 npm run start
 
 ![Text Description automatically
-generated](media/picture20.jpg)
+generated](media/Picture20.jpg)
 
 Figure 17 Connector Job Completed
 
 ![Graphical user interface, text, application, email Description
-automatically generated](media/picture21.jpg)
+automatically generated](media/Picture21.jpg)
 
 Figure 18 Review Changes in iModel
 
 ![Graphical user interface, application Description automatically
-generated](media/picture22.jpg)
+generated](media/Picture22.jpg)
 
 Figure 19 Review components in model tree
 
