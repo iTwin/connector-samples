@@ -1,6 +1,6 @@
 {
   "name": "@iTwin/tagging-connector",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Connector to augment iModel with tagged elements.",
   "main": "lib/App.js",
   "scripts": {
@@ -10,15 +10,17 @@
     "clean": "rimraf lib"
   },
   "dependencies": {
-    "@bentley/bentleyjs-core": "^2.19.6",
     "@bentley/process-functional-schema": "^1.0.1",
-    "@itwin/pcf": "^0.3.0-3",
-    "xlsx": "^0.17.0"
+    "@itwin/core-backend": "^4.3.5",
+    "@itwin/core-bentley": "^4.3.5",
+    "@itwin/pcf": "D:/source_trees/pcfTIP/pcf/core",
+    "@opentelemetry/api": "^1.8.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@bentley/build-tools": "^2.16.0",
-    "@types/node": "^10.17.28",
+    "@itwin/build-tools": "^4.3.5",
+    "@types/node": "^20.11.30",
     "babel-cli": "^6.26.0",
-    "typescript": "^4.1.0"
+    "typescript": "^4.8.2"
   }
 }

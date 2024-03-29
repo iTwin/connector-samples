@@ -1,7 +1,7 @@
 // App.ts contains all the parameters to start a connector job and the App.js created from this file will be the executable for your connector.
 // CAUTION: You may not want to commit this file as it contains client-specific info.
 
-import { Logger, LogLevel } from "@bentley/bentleyjs-core";
+import { Logger, LogLevel } from "@itwin/core-bentley";
 import * as pcf from "@itwin/pcf";
 import * as path from "path";
 //Test
