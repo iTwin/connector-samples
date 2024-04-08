@@ -1,6 +1,6 @@
 {
   "name": "cobie-excel-connector",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "COBie Excel Connector",
   "scripts": {
     "start": "node ./lib/App.js",
@@ -14,13 +14,13 @@
     "@bentley/building-spatial-schema": "1.0.0",
     "@bentley/functional-schema": "1.0.3",
     "@bentley/spatial-composition-schema": "1.0.0",
-    "@itwin/core-backend": "^3.0.0",
-    "@itwin/ecschema-metadata": "^3.0.0",
-    "@itwin/pcf": "0.3.0-2"
+    "@itwin/core-backend": "^4.3.5",
+    "@itwin/ecschema-metadata": "^4.3.5",
+    "@itwin/pcf": "^2.0.0-dev.1"
   },
   "devDependencies": {
-    "@itwin/build-tools": "^3.0.2",
-    "@types/node": "10.14.1",
-    "typescript": "~4.3.0"
+    "@itwin/build-tools": "^4.3.5",
+    "@types/node": "^20.11.30",
+    "typescript": "~4.9.5"
   }
 }
