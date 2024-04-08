@@ -13,9 +13,9 @@
     "@bentley/process-functional-schema": "^1.0.1",
     "@itwin/core-backend": "^4.3.5",
     "@itwin/core-bentley": "^4.3.5",
-    "@itwin/pcf": "D:/source_trees/pcfTIP/pcf/core",
+    "@itwin/pcf": "^2.0.0-dev.1",
     "@opentelemetry/api": "^1.8.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
   },
   "devDependencies": {
     "@itwin/build-tools": "^4.3.5",
