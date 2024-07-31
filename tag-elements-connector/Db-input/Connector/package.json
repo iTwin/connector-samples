@@ -15,8 +15,8 @@
     "@itwin/pcf": "^0.3.0-3",
     "axios": "^0.27.2",
     "msnodesqlv8": "^2.6.0",
-    "mssql": "^9.0.1",
-    "tedious": "^15.1.0",
+    "mssql": "^11.0.1",
+    "tedious": "^18.3.0",
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
