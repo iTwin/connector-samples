@@ -1,8 +1,10 @@
-# DEPRECATED - Connector Code Samples For Tagging Elements
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+
+These connector-samples are now **deprecated**. If you have any questions or concerns about this, please [submit a service case](https://bentleysystems.service-now.com/csp?id=csm_sc_cat_item&sys_id=0a2342ef1b10c1103eeeeb53604bcb0b).
+
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
 ## Introduction
-
-These samples have been archived as readonly and are considered to be DEPRECATED as the PCF module they depend on has been DEPRECATED.
 
 This connector for iTwin, enables augmenting iModels with tagged elements. Tag information can be fetched from spreadsheet, json file or an API. Connector reads them and synchronizes with iModel using [@itwin/pcf](https://www.npmjs.com/package/@itwin/pcf) package.
 
